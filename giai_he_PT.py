@@ -2,6 +2,7 @@
 # Yêu cầu hoàn chỉnh lại đoạn code
 #để có 1 app giải hệ phương trình có n phương trình n ẩn
 import numpy as np
+print("Chuong trinh giai phuong trinh bac hai")
 a1 = int(input("Nhap a1="))
 a2 = int(input("Nhap a2="))
 a3 = int(input("Nhap a3="))
