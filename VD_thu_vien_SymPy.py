@@ -21,3 +21,27 @@ print(khai_trien_bt)
 
 rut_gon_bt = sym.simplify((x + x*y)/x)  # rút gọn biểu thức (x + x*y) / x
 print(rut_gon_bt)
+
+# độ chính xác
+print((sym.pi).evalf(5))  # lấy số pi đến độ chính xác là 5 chữ số  dùng hàm evalf
+print(sym.N(sym.sqrt(2),10))  # lấy căn bậc 2 của 2 đến độ chính xác là 10 chữ số  dùng hàm N
+
+# xác định phân số đơn giản ban đầu
+phan_so = sym.nsimplify(0.333333)
+print(phan_so)
+phan_so2 = sym.nsimplify(0.333333, tolerance=1e-2)
+print(phan_so2)
+
+# giải phương trình
+ket_qua = sym.solve(x**2-1, x) # giai phương trình 1 ẩn
+print(ket_qua)
+ket_qua2 = sym.solve((x-5)*(y-6)) # giai hệ phương trình 2 ẩn
+print(ket_qua2)
+ket_qua3 = sym.solve((x+5*y-2, 3*x + 6*y-15), (x, y))
+ket_qua3[x], ket_qua3[y]
+print(ket_qua3)
+
+# biến đổi Fourier
+
+
+
