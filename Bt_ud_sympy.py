@@ -9,19 +9,19 @@ from tkinter import messagebox
 def tinh_toan_co_ban():
     # Tạo một cửa sổ mới để hiển thị dữ liệu
     new_window = tk.Toplevel(window)
-    new_window.title('Dữ liệu từ tệp văn bản')
+    new_window.title('Tinh toan co ban')
 
 
     text_widget.pack()
 def tinh_toan_nang_cao():
     new_window = tk.Toplevel(window)
-    new_window.title('Tong so sinh vien di thi :')
+    new_window.title('Tinh toan nang cao')
 
 
 
 def giai_phuong_trinh():
     new_window = tk.Toplevel(window)
-    new_window.title('Du lieu ve sl diem A :')
+    new_window.title('Giai phuong trinhg')
 
 
 
