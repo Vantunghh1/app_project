@@ -2,6 +2,7 @@ from sympy import *
 from tkinter import *
 from tkinter import messagebox
 
+#Hàm này được sử dụng để cấu hình SymPy để hiển thị kết quả dưới dạng Unicode khi in ra màn hình.
 init_printing(use_unicode=True)
 
 win = Tk()
@@ -60,6 +61,7 @@ class Cal:
         except:
             messagebox.showwarning("CHu y", "Kieu du lieu khong dung!")
 
+    # phương thức trong lớp Cal để lấy ma trận hệ số
     def get_mat_A(self):
         matrix_A = []
         for i3 in range(int(sopt.get())):
@@ -72,6 +74,7 @@ class Cal:
 
         return Matrix(matrix_A)
 
+    # phương thức trong lớp Cal để lấy ma trận cột
     def get_mat_B(self):
         matrix_B = []
         for i3 in range(int(sopt.get())):
@@ -84,15 +87,17 @@ class Cal:
         return Matrix(matrix_B)
 
     def calculate(self):
-        A = Cal.get_mat_A(self)
-        B = Cal.get_mat_B(self)
+        A = Cal.get_mat_A(self)  #lấy ma trận hệ số từ giao diện người dùng sử dụng các phương thức đã định nghĩa trước đó
+        B = Cal.get_mat_B(self)  #lấy ma trận cột từ giao diện người dùng sử dụng các phương thức đã định nghĩa trước đó
         A_ = A.col_insert(int(sopt.get()) - 1, B)
         if (A.det() != 0):
             if (A.rank() != A_.rank()):
                 messagebox.showinfo("Notification", "He phuong trinh vo nghiem")
             if (A.rank() == A_.rank() and A.rank() == int(sopt.get())):
                 messagebox.showinfo("Notification", "He phuong trinh co nghiem duy nhat")
-                X = A.inv() * B
+
+                X = A.inv() * B  #sử dụng thư viện SymPy để giải hệ phương trình tuyến tính bằng phép nghịch đảo ma trận.
+                                 # Kết quả là ma trận X chứa giá trị của các biến ẩn.
                 print(X)
                 for i in range(int(sopt.get())):
                     Label(win, background='purple', font=('Arial', 12), fg='White', text=f'x{i} = ', width=4).place(
