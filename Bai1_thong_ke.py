@@ -19,8 +19,9 @@ def tong_SV_di_thi():
     new_window.title('Tong so sinh vien di thi :')
     tongsv = in_data[:, 1]
     Tong = np.sum(tongsv)
-    text_widget = tk.Text(new_window)
-    text_widget.insert(tk.END, tongsv)
+    label = tk.Label(new_window, text=f"Tổng số sinh viên tham gia thi: {Tong}")
+    label.pack()
+
 
 window = tk.Tk()
 window.title('Giao diện Python')
