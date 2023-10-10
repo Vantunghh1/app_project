@@ -1,64 +1,71 @@
 from sympy import *
 import tkinter as tk
-<<<<<<< HEAD
 from tkinter import ttk, messagebox
-=======
-from sympy import symbols, Eq, solve
-from tkinter import ttk
-from sympy import *
-
-init_printing()
-x, y, z = symbols('x y z')
-
->>>>>>> 55202b16ee0bd6d21f41da6a2d0976439b75c0c3
 
 def tinh_toan_co_ban():
     new_window = tk.Toplevel(window)
-    new_window.title('Tính toán cơ bản')
+    new_window.title('Tinh toan co ban')
+
+    def calculate_basic_operation():
+        num1 = float(num1_entry.get())
+        num2 = float(num2_entry.get())
+
+        result_label.config(
+            text=f"Tổng: {num1 + num2}, Hiệu: {num1 - num2}, Tích: {num1 * num2}, Thương: {num1 / num2}")
+
+    num1_label = ttk.Label(new_window, text="Nhập số thứ nhất:")
+    num1_label.pack(pady=10)
+
+    num1_entry = ttk.Entry(new_window)
+    num1_entry.pack()
+
+    num2_label = ttk.Label(new_window, text="Nhập số thứ hai:")
+    num2_label.pack(pady=10)
+
+    num2_entry = ttk.Entry(new_window)
+    num2_entry.pack()
+
+    calculate_button = ttk.Button(new_window, text="Tính toán", command=calculate_basic_operation)
+    calculate_button.pack(pady=10)
+
+    result_label = ttk.Label(new_window, text="")
+    result_label.pack()
 
 def tinh_toan_nang_cao():
     new_window = tk.Toplevel(window)
-<<<<<<< HEAD
-    new_window.title('Tong so sinh vien di thi :')
-=======
-    new_window.title('Tính toán nâng cao')
-    new_window.geometry("600x600")
-    Nhap_x = ttk.Label(new_window, text="Nhập a:")
-    Nhap_y = ttk.Label(new_window, text="Nhập b:")
-    Nhap_z = ttk.Label(new_window, text="Nhập c:")
-    Nhap_x.grid(column = 5, row = 1)
-    Nhap_y.grid(column = 5, row = 2)
-    Nhap_z.grid(column = 5, row = 3)
-    nhapx = ttk.Entry(new_window)
-    nhapx.grid(column = 6, row = 1)
-    nhapy = ttk.Entry(new_window)
-    nhapy.grid(column = 6, row = 2)
-    nhapz = ttk.Entry(new_window)
-    nhapz.grid(column = 6, row = 3)
-    show1 = ttk.Label(new_window,text =  " ");
-    show1.grid(column = 3, row = 5)
-    show2 = ttk.Label(new_window,text = " ");
-    show2.grid(column=3, row=6)
-    show3 = ttk.Label(new_window,text = " ");
-    show3.grid(column=3, row=7)
-    def calculate():
-        a = int(nhapx.get())
-        b = int(nhapy.get())
-        c = int(nhapz.get())
-        eq = Eq(x ** a + b * x + c, 0)
-        # giai phuong trinh
-        solutions = solve(eq, x)
-        # tinh gioi han
-        limit_expr = limit(sin(x) / x, x, 0)
-        # Tính đạo hàm
-        diff_expr = diff(cos(x), x)
-        show1.config(text="Kết quả của giải phương trình là: " + str(solutions))
-        show2.config(text="Kết quả của tính giới hạn: " + str(limit_expr))
-        show3.config(text="Kết quả của tính đạo hàm: " + str(diff_expr))
-    buttona = Button(new_window, text="Tinh toan", command = calculate)
-    buttona.grid(column=6, row=4)
+    new_window.title('Tinh toan nang cao :')
 
->>>>>>> 55202b16ee0bd6d21f41da6a2d0976439b75c0c3
+    # Tạo giao diện để nhập một số
+    ttk.Label(new_window, text="Nhập một số:").pack()
+    num_entry = ttk.Entry(new_window)
+    num_entry.pack()
+
+    def tinh_toan():
+        try:
+            x = symbols('x')
+            num = float(num_entry.get())
+
+            # Tính sin, cos, đạo hàm, tích phân và giới hạn
+            sin_value = sin(num)
+            cos_value = cos(num)
+            derivative = diff(sin(x), x).subs(x, num)
+            integral = integrate(sin(x), (x, 0, num))
+            limit_value = limit(sin(x) / x, x, num)
+
+            # Hiển thị kết quả
+            result_label.config(text=f"sin({num}) = {sin_value}\n"
+                                     f"cos({num}) = {cos_value}\n"
+                                     f"Đạo hàm tại {num} = {derivative}\n"
+                                     f"Tích phân từ 0 đến {num} của sin(x) = {integral}\n"
+                                     f"Giới hạn khi x tiến đến {num} của sin(x)/x = {limit_value}")
+        except ValueError:
+            messagebox.showerror("Lỗi", "Vui lòng nhập số hợp lệ.")
+
+    calculate_button = ttk.Button(new_window, text="Tính toán", command=tinh_toan)
+    calculate_button.pack()
+
+    result_label = ttk.Label(new_window, text="")
+    result_label.pack()
 
 def giai_phuong_trinh():
     new_window = tk.Toplevel(window)
