@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import os
 import tkinter as tk
 from tkinter import *
+from tkinter import filedialog  # Sử dụng thư viện filedialog cho hộp thoại lưu
 
 top = tk.Tk()
 top.geometry('400x400')
@@ -70,14 +71,14 @@ def cartoonify(ImagePath):
 
 
 def save(ReSized6, ImagePath):
-    # saving an image using imwrite()
     newName = "cartoonified_Image"
     path1 = os.path.dirname(ImagePath)
     extension = os.path.splitext(ImagePath)[1]
-    path = os.path.join(path1, newName + extension)
-    cv2.imwrite(path, cv2.cvtColor(ReSized6, cv2.COLOR_RGB2BGR))
-    I = "Image saved by name " + newName + " at " + path
-    tk.messagebox.showinfo(title=None, message=I)
+    save_path = filedialog.asksaveasfilename(defaultextension=extension, filetypes=[("Image Files", "*" + extension)])
+    if save_path:
+        cv2.imwrite(save_path, cv2.cvtColor(ReSized6, cv2.COLOR_RGB2BGR))
+        I = "Image saved by name " + newName + " at " + save_path
+        tk.messagebox.showinfo(title=None, message=I)
 
 
 upload = Button(top, text="Cartoonify an Image", command=upload, padx=10, pady=5)
