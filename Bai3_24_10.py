@@ -88,7 +88,7 @@ def save_image():
 
 # Tạo cửa sổ giao diện
 top = tk.Tk()
-top.title("Xử Lý Ảnh và Tăng cường Sắc nét")
+top.title("Xử Lý Ảnh Làm mờ và tăng cường độ sáng độ sắc nét")
 
 # Tạo nút "Mở ảnh"
 open_button = tk.Button(top, text="Mở ảnh", command=mo_anh)
