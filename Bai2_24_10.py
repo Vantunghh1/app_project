@@ -45,7 +45,7 @@ def save_image():
         print("Không có ảnh để lưu. Vui lòng chọn ảnh và thực hiện chỉnh sửa trước.")
 
 root = tk.Tk()
-root.title("Ứng dụng Tăng cường Sắc nét và Độ Sáng Ảnh")
+root.title("Ứng dụng Tăng cường  do Sắc nét và Độ Sáng Ảnh")
 
 btn_open = tk.Button(root, text="Chọn Ảnh", command=open_image)
 btn_open.pack(pady=10)
