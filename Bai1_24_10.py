@@ -54,7 +54,7 @@ def mo_anh():
 
 # Tạo cửa sổ giao diện
 top = tk.Tk()
-top.title("Xử Lý Ảnh")
+top.title("ứng dụng làm mờ phần ảnh bằng cách khoanh vùng")
 
 # Tạo nút "Mở ảnh"
 open_button = tk.Button(top, text="Mở ảnh", command=mo_anh)
